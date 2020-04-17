@@ -15,7 +15,7 @@ import { CSSPlugin } from "gsap/CSSPlugin";
 gsap.registerPlugin(CSSPlugin);
 
 const endDate1 = new Date(2020, 3, 26);
-const endDate2 = new Date(2020, 4, 10);
+const endDate2 = new Date(2020, 4, 11);
 
 function useWindowSize() {
   const isClient = typeof window === "object";
@@ -207,7 +207,7 @@ function App() {
           className="small red"
           isSmall
           title="Siguiente posible fecha:"
-          subtitle="10 de mayo de 2020"
+          subtitle="11 de mayo de 2020"
           end={endDate2}
           timer={timer[1]}
         ></CountDown>

@@ -70,7 +70,7 @@ function ClockNumber({ name, value, isSmall }) {
   );
 }
 
-function CountDown({ isSmall, title, timer, className }) {
+function CountDown({ isSmall, title, subtitle, timer, className }) {
   const count = useMemo(
     () => ({
       d0: timer.days.length > 1 ? timer.days.charAt(0) : 0,
@@ -93,7 +93,10 @@ function CountDown({ isSmall, title, timer, className }) {
   );
   return (
     <div className="countdown">
-      <h2>{title}</h2>
+      <div className="countdown-header">
+        <h2>{title}</h2>
+        <time>{subtitle}</time>
+      </div>
       <div className={`timer ${(className && className) || ""}`}>
         <div>
           <div className="number-wrapper">
@@ -194,7 +197,8 @@ function App() {
       <h1>¿Cuánto tiempo queda de cuarentena?</h1>
       <div className="container">
         <CountDown
-          title="Próxima fecha confirmada"
+          title="Próxima fecha confirmada:"
+          subtitle="27 de abril de 2020"
           isSmall={isSmall}
           end={endDate1}
           timer={timer[0]}
@@ -202,7 +206,8 @@ function App() {
         <CountDown
           className="small red"
           isSmall
-          title="Siguiente posible fecha"
+          title="Siguiente posible fecha:"
+          subtitle="10 de mayo de 2020"
           end={endDate2}
           timer={timer[1]}
         ></CountDown>

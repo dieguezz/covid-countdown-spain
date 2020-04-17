@@ -136,7 +136,7 @@ table {
 }
 
 .red .number {
-  text-shadow: 1px 1px 1px #c03232;
+  text-shadow: 1px 1px 2px #c03232;
 }
 
 .timer {
@@ -213,24 +213,39 @@ h1 {
 }
 
 h2 {
-  color: #95e3f7;
-  width: 100%;
+    color: #95e3f7;
+    text-transform: uppercase;
+    font-size: .8em;
+    text-shadow: 0px 0px 24px;
+}
+
+
+.countdown-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 24px;
-  font-weight: bolder;
-  text-align: center;
+}
+
+time {
+  color: #95e3f7;
+  padding: 0 14px;
+  font-weight: bold;
 }
 
 p {
   color: #95e3f7;
-  font-size: 14px;
+  font-size: .8em;
   margin-top: 24px;
   display: flex;
   align-items: center;
+      font-weight: bold;
+
 }
 
 p:last-child {
   margin-top: 24px;
-  font-size: 8px;
+  font-size: .5em;
   align-items: center;
   color: #8a8a8a;
 }

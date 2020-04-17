@@ -14,8 +14,12 @@ import { CSSPlugin } from "gsap/CSSPlugin";
 
 gsap.registerPlugin(CSSPlugin);
 
+const endDate1 = new Date(2020, 3, 26);
+const endDate2 = new Date(2020, 4, 10);
+
 function useWindowSize() {
   const isClient = typeof window === "object";
+
   function getSize() {
     return {
       width: isClient ? window.innerWidth : undefined,
@@ -41,17 +45,17 @@ function useWindowSize() {
   return windowSize;
 }
 
-function ClockNumber({ name, value, isMobile }) {
+function ClockNumber({ name, value, isSmall }) {
   const tl = TweenLite;
   const numbers = Array.from(new Array(10)).map((i, idx) => idx);
   const [translate, setTranslate] = useState(tl.to({}, 1, { paused: true }));
   let el = useRef(null);
-  const baseHeight = isMobile ? 24 : 64;
+  const baseHeight = isSmall ? 24 : 64;
   useLayoutEffect(() => {
     setTranslate(
       tl.to(el.current, 0.1, { y: (value && value * baseHeight * -1) || 0 })
     );
-  }, [value, isMobile, baseHeight]);
+  }, [value, isSmall, baseHeight, tl]);
 
   return (
     <div className="item">
@@ -66,46 +70,7 @@ function ClockNumber({ name, value, isMobile }) {
   );
 }
 
-function App() {
-  const windowSize = useWindowSize();
-
-  const [isMobile, setIsMobile] = useState(windowSize.width < 768);
-  useEffect(() => {
-    if (windowSize.width < 768) {
-      if (!isMobile) {
-        setIsMobile(true);
-      }
-    } else {
-      if (isMobile) {
-        setIsMobile(false);
-      }
-    }
-  }, [windowSize.width, isMobile]);
-
-  const [timer, setTimer] = useState({
-    days: "0",
-    hours: "0",
-    minutes: "0",
-    seconds: "0",
-    miliseconds: "0",
-  });
-
-  useLayoutEffect(() => {
-    setInterval(() => {
-      const difference = Math.abs(new Date(2020, 3, 26) - new Date());
-      setTimer((timer) => ({
-        days: Math.ceil(difference / (1000 * 60 * 60 * 24)).toString(),
-        hours: Math.floor(
-          (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60).toString()
-        ).toString(),
-        minutes: Math.floor(
-          (difference % (1000 * 60 * 60)) / (1000 * 60)
-        ).toString(),
-        seconds: Math.floor((difference % (1000 * 60)) / 1000).toString(),
-      }));
-    }, 1000);
-  }, []);
-
+function CountDown({ isSmall, title, timer, className }) {
   const count = useMemo(
     () => ({
       d0: timer.days.length > 1 ? timer.days.charAt(0) : 0,
@@ -126,55 +91,121 @@ function App() {
     }),
     [timer]
   );
-
   return (
-    <div className="content">
-      <h1>¿Cuánto tiempo queda de confinamiento?</h1>
-      <div className="timer">
+    <div className="countdown">
+      <h2>{title}</h2>
+      <div className={`timer ${(className && className) || ""}`}>
         <div>
           <div className="number-wrapper">
-            <ClockNumber isMobile={isMobile} name="days-0" value={count.d0} />
-            <ClockNumber isMobile={isMobile} name="days-1" value={count.d1} />
+            <ClockNumber isSmall={isSmall} name="days-0" value={count.d0} />
+            <ClockNumber isSmall={isSmall} name="days-1" value={count.d1} />
           </div>
           <div className="text">Días</div>
         </div>
         <div>
           <div className="number-wrapper">
-            <ClockNumber isMobile={isMobile} name="hours-0" value={count.h0} />
-            <ClockNumber isMobile={isMobile} name="hours-1" value={count.h1} />
+            <ClockNumber isSmall={isSmall} name="hours-0" value={count.h0} />
+            <ClockNumber isSmall={isSmall} name="hours-1" value={count.h1} />
           </div>
           <div className="text">Horas</div>
         </div>
         <div>
           <div className="number-wrapper">
-            <ClockNumber
-              isMobile={isMobile}
-              name="minutes-0"
-              value={count.m0}
-            />
-            <ClockNumber
-              isMobile={isMobile}
-              name="minutes-1"
-              value={count.m1}
-            />
+            <ClockNumber isSmall={isSmall} name="minutes-0" value={count.m0} />
+            <ClockNumber isSmall={isSmall} name="minutes-1" value={count.m1} />
           </div>
           <div className="text">Minutos</div>
         </div>
         <div>
           <div className="number-wrapper">
-            <ClockNumber
-              isMobile={isMobile}
-              name="seconds-0"
-              value={count.s0}
-            />
-            <ClockNumber
-              isMobile={isMobile}
-              name="seconds-1"
-              value={count.s1}
-            />
+            <ClockNumber isSmall={isSmall} name="seconds-0" value={count.s0} />
+            <ClockNumber isSmall={isSmall} name="seconds-1" value={count.s1} />
           </div>
           <div className="text">Segundos</div>
         </div>
+      </div>
+    </div>
+  );
+}
+
+function App() {
+  const windowSize = useWindowSize();
+  const [timer, setTimer] = useState([
+    {
+      days: "0",
+      hours: "0",
+      minutes: "0",
+      seconds: "0",
+      miliseconds: "0",
+    },
+    {
+      days: "0",
+      hours: "0",
+      minutes: "0",
+      seconds: "0",
+      miliseconds: "0",
+    },
+  ]);
+
+  useLayoutEffect(() => {
+    setInterval(() => {
+      const difference1 = Math.abs(endDate1 - new Date());
+      const difference2 = Math.abs(endDate2 - new Date());
+      setTimer((timer) => [
+        {
+          days: Math.ceil(difference1 / (1000 * 60 * 60 * 24)).toString(),
+          hours: Math.floor(
+            (difference1 % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60).toString()
+          ).toString(),
+          minutes: Math.floor(
+            (difference1 % (1000 * 60 * 60)) / (1000 * 60)
+          ).toString(),
+          seconds: Math.floor((difference1 % (1000 * 60)) / 1000).toString(),
+        },
+        {
+          days: Math.ceil(difference2 / (1000 * 60 * 60 * 24)).toString(),
+          hours: Math.floor(
+            (difference2 % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60).toString()
+          ).toString(),
+          minutes: Math.floor(
+            (difference2 % (1000 * 60 * 60)) / (1000 * 60)
+          ).toString(),
+          seconds: Math.floor((difference2 % (1000 * 60)) / 1000).toString(),
+        },
+      ]);
+    }, 1000);
+  }, []);
+
+  const [isSmall, setisSmall] = useState(windowSize.width < 768);
+  useEffect(() => {
+    if (windowSize.width < 768) {
+      if (!isSmall) {
+        setisSmall(true);
+      }
+    } else {
+      if (isSmall) {
+        setisSmall(false);
+      }
+    }
+  }, [windowSize.width, isSmall]);
+
+  return (
+    <div className="content">
+      <h1>¿Cuánto tiempo queda de cuarentena?</h1>
+      <div className="container">
+        <CountDown
+          title="Próxima fecha confirmada"
+          isSmall={isSmall}
+          end={endDate1}
+          timer={timer[0]}
+        ></CountDown>
+        <CountDown
+          className="small red"
+          isSmall
+          title="Siguiente posible fecha"
+          end={endDate2}
+          timer={timer[1]}
+        ></CountDown>
       </div>
       <p>
         Datos actualizados con el último{" "}

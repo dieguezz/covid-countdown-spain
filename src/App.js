@@ -5,7 +5,7 @@ import React, {
   useMemo,
   useRef,
 } from "react";
-import ray from "./ray.jpg";
+import ray from "./ray2.svg";
 import "./index.css";
 import { gsap } from "gsap";
 

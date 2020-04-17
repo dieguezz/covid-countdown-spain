@@ -278,8 +278,9 @@ a {
   background-image: url("./spain.jpg");
 }
 
-svg {
+img {
   padding: 0 4px;
+  width: 24px;
 }
 
 .small .item {

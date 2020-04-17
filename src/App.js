@@ -218,6 +218,7 @@ function App() {
           href="https://boe.es/diario_boe/txt.php?id=BOE-A-2020-4406"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="etereo"
         >
           BOE
         </a>{" "}

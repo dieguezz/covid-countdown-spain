@@ -5,7 +5,7 @@ import React, {
   useMemo,
   useRef,
 } from "react";
-import ray from './ray.jpg'
+import ray from "./ray.jpg";
 import "./index.css";
 import { TweenLite } from "gsap/all";
 
@@ -17,35 +17,35 @@ function useWindowSize() {
       height: isClient ? window.innerHeight : undefined,
     };
   }
-  
+
   const [windowSize, setWindowSize] = useState(getSize);
-  
+
   useLayoutEffect(() => {
     if (!isClient) {
       return false;
     }
-    
+
     function handleResize() {
       setWindowSize(getSize());
     }
-    
+
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []); // Empty array ensures that effect is only run on mount and unmount
-  
+
   return windowSize;
 }
 
 function ClockNumber({ name, value, isMobile }) {
-  const tl = TweenLite
+  const tl = TweenLite;
   const numbers = Array.from(new Array(10)).map((i, idx) => idx);
-  const [translate, setTranslate] = useState(
-    tl.to({}, 1, { paused: true })
-  );
+  const [translate, setTranslate] = useState(tl.to({}, 1, { paused: true }));
   let el = useRef(null);
   const baseHeight = isMobile ? 24 : 64;
   useLayoutEffect(() => {
-    setTranslate(tl.to(el.current, 0.1, { y: value * baseHeight * -1 }));
+    setTranslate(
+      tl.to(el.current, 0.1, { y: (value && value * baseHeight * -1) || 0 })
+    );
   }, [value, isMobile, baseHeight]);
 
   return (

@@ -1,5 +1,16 @@
-@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&display=swap");
+@font-face {
+  font-family: "Orbitron";
+  font-weight: bold;
+  src: url('/fonts/Orbitron-Black.woff') , url('/fonts/Orbitron-Black.woff2');
+  font-display: swap;
+}
 
+@font-face {
+  font-family: "Orbitron";
+  font-weight: normal;
+  src: url('/fonts/Orbitron-Regular.woff') format('woff'), url('/fonts/Orbitron-Regular.woff2') format('woff2');
+  font-display: swap;
+}
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)

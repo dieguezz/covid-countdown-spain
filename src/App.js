@@ -7,7 +7,12 @@ import React, {
 } from "react";
 import ray from "./ray.jpg";
 import "./index.css";
+import { gsap } from "gsap";
+
 import { TweenLite } from "gsap/all";
+import { CSSPlugin } from "gsap/CSSPlugin";
+
+gsap.registerPlugin(CSSPlugin);
 
 function useWindowSize() {
   const isClient = typeof window === "object";

@@ -11,41 +11,41 @@ import { TweenLite } from "gsap/all";
 
 function useWindowSize() {
   const isClient = typeof window === "object";
-
   function getSize() {
     return {
       width: isClient ? window.innerWidth : undefined,
       height: isClient ? window.innerHeight : undefined,
     };
   }
-
+  
   const [windowSize, setWindowSize] = useState(getSize);
-
+  
   useLayoutEffect(() => {
     if (!isClient) {
       return false;
     }
-
+    
     function handleResize() {
       setWindowSize(getSize());
     }
-
+    
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []); // Empty array ensures that effect is only run on mount and unmount
-
+  
   return windowSize;
 }
 
 function ClockNumber({ name, value, isMobile }) {
+  const tl = TweenLite
   const numbers = Array.from(new Array(10)).map((i, idx) => idx);
   const [translate, setTranslate] = useState(
-    TweenLite.to({}, 1, { paused: true })
+    tl.to({}, 1, { paused: true })
   );
   let el = useRef(null);
   const baseHeight = isMobile ? 24 : 64;
   useLayoutEffect(() => {
-    setTranslate(TweenLite.to(el.current, 0.1, { y: value * baseHeight * -1 }));
+    setTranslate(tl.to(el.current, 0.1, { y: value * baseHeight * -1 }));
   }, [value, isMobile, baseHeight]);
 
   return (

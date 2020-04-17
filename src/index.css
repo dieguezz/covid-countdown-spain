@@ -1,13 +1,251 @@
-body {
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&display=swap");
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.number {
+  font-size: 64px;
+  text-shadow: 1px 1px 3px #00bdec;
+}
+
+.timer {
+  display: flex;
+  font-weight: bolder;
+  align-self: center;
+  justify-self: center;
+  margin: 64px 0;
+}
+body {
+  font-family: "Orbitron", sans-serif;
+  background:
+radial-gradient(black 15%, transparent 16%) 0 0,
+radial-gradient(black 15%, transparent 16%) 8px 8px,
+radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
+radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
+background-color:#282828;
+background-size:16px 16px;
+}
+.item {
+  max-height: 64px;
+  overflow: hidden;
+  height: 64px;
+  color: #00ccff;
+}
+
+.text {
+  color: #00ccff;
+  text-transform: uppercase;
+  font-weight: bolder;
+  font-size: 10px;
+  padding: 8px;
+}
+
+.timer > div {
+  display: flex;
+  position: relative;
+}
+
+.number-wrapper {
+  display: flex;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  height: 100vh;
+  padding: 0 24px;
+}
+
+h1 {
+  margin-bottom: 24px;
+  color: white;
+  font-size: 32px;
+  text-align: center;
+}
+
+p {
+  color: #d2d2d2;
+  font-size: 14px;
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+}
+
+p:last-child {
+  margin-top: 24px;
+  font-size: 8px;
+  align-items: center;
+  color: #8a8a8a;
+}
+
+a {
+  padding: 0 0.5em;
+  color: #d2d2d2;
+}
+
+.flag {
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  background-position: left center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url("./spain.jpg");
+}
+
+svg {
+  padding: 0 4px;
+}
+
+@media (max-width: 768px) {
+  .item {
+    max-height: 24px;
+    height: 24px;
+  }
+  .number {
+    font-size: 24px;
+    text-shadow: none;
+  }
+  .text {
+    position: absolute;
+    top: -24px;
+    left: 0px;
+
+  }
+  .timer > div {
+    padding: 0 16px;
+  }
+  p {
+    font-size: 10px;
+  }
 }

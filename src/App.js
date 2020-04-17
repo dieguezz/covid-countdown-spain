@@ -215,7 +215,7 @@ function App() {
       <p>
         Datos actualizados con el último{" "}
         <a
-          href="https://boe.es/diario_boe/txt.php?id=BOE-A-2020-4406"
+          href="https://www.boe.es/buscar/act.php?id=BOE-A-2020-4413"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="etereo"

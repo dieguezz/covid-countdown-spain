@@ -198,7 +198,7 @@ function App() {
       <div className="container">
         <CountDown
           title="Último día de cuarentena:"
-          subtitle="27 de abril de 2020"
+          subtitle="26 de abril de 2020"
           isSmall={isSmall}
           end={endDate1}
           timer={timer[0]}
@@ -207,7 +207,7 @@ function App() {
           className="small red"
           isSmall
           title="Posible prórroga hasta:"
-          subtitle="11 de mayo de 2020"
+          subtitle="10 de mayo de 2020"
           end={endDate2}
           timer={timer[1]}
         ></CountDown>

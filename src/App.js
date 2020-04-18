@@ -197,7 +197,7 @@ function App() {
       <h1>¿Cuánto tiempo queda de cuarentena?</h1>
       <div className="container">
         <CountDown
-          title="Próxima fecha confirmada:"
+          title="Último día de cuarentena:"
           subtitle="27 de abril de 2020"
           isSmall={isSmall}
           end={endDate1}
@@ -206,7 +206,7 @@ function App() {
         <CountDown
           className="small red"
           isSmall
-          title="Siguiente posible fecha:"
+          title="Posible prórroga hasta:"
           subtitle="11 de mayo de 2020"
           end={endDate2}
           timer={timer[1]}

@@ -50,7 +50,7 @@ function ClockNumber({ name, value, isSmall }) {
   const numbers = Array.from(new Array(10)).map((i, idx) => idx);
   const [translate, setTranslate] = useState(tl.to({}, 1, { paused: true }));
   let el = useRef(null);
-  const baseHeight = isSmall ? 24 : 64;
+  const baseHeight = isSmall ? 24 : 72;
   useLayoutEffect(() => {
     setTranslate(
       tl.to(el.current, 0.1, { y: (value && value * baseHeight * -1) || 0 })

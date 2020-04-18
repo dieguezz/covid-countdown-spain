@@ -5,6 +5,21 @@
   font-display: swap;
 }
 
+/* @font-face {
+  font-family: "digital";
+  font-weight: bold;
+  src: url('/fonts/digital-7mono.woff') , url('/fonts/digital-7mono.woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "trs";
+  font-weight: bold;
+  src: url('/fonts/trs-millionrg.woff') , url('/fonts/trs-millionrg.woff2');
+  font-display: swap;
+} */
+
+
 @font-face {
   font-family: "Orbitron";
   font-weight: normal;
@@ -142,7 +157,7 @@ table {
 }
 
 .number {
-  font-size: 64px;
+  font-size: 72px;
   text-shadow: 1px 1px 3px #00bdec;
 }
 
@@ -175,9 +190,9 @@ body {
   background-size: 16px 16px;
 }
 .item {
-  max-height: 64px;
+  max-height: 72px;
   overflow: hidden;
-  height: 64px;
+  height: 72px;
   color: #00ccff;
 }
 
